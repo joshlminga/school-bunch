@@ -20,5 +20,5 @@ yarn-error.log
 
 # Custom Ignore
 .DS_Store
-/storage/app/public/media
-/public/media
+/storage/app/public/media-private
+/public/
