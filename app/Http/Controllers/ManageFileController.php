@@ -14,7 +14,7 @@ class ManageFileController extends Controller
 {
     private $Upload = "school"; //Upload Folder Name inside the public/admin/media
     private $AllowedFile = "xls,xlsx,csv"; //Set Default allowed file extension, remember you can pass this upon upload to override default allowed file type. jpg|jpeg|png|doc|docx|
-    private $Trial = false;
+    private $Trial = true;
 
     /**
      * Display the user's profile form.
