@@ -17,6 +17,14 @@ class SchoolDoc extends Model
     ];
 
     /**
+     * Todo: Related to documennt
+     */
+    public function docinfo()
+    {
+        return $this->hasMany(StudentInfo::class, 'doc');
+    }
+
+    /**
      * Todo: School Document
      *
      * ? Read the school document
@@ -27,7 +35,7 @@ class SchoolDoc extends Model
      *
      * @return array
      */
-    public static function read(int $doc = null, string $doc_path = null): array
+    public static function read(int $doc = null, string $doc_path = null, $readonly = true): array
     {
 
         // ? Check Path  & Doc if is null
@@ -100,6 +108,11 @@ class SchoolDoc extends Model
         // ? If there are missing columns, return error
         if (count($missing_columns) > 0) {
             return [];
+        }
+
+        // ? If readonly is true, return the column names
+        if ($readonly) {
+            return $column_names;
         }
 
         // ? Document Data

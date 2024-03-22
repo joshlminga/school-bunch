@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Config;
 
 class RegisteredUserController extends Controller
 {
-    use Config;
+    //use Config;
 
     /**
      * Display the registration view.
@@ -46,7 +46,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        $user->roles()->attach(Config::get('roles.roles.access')); // Assign roles with ID 4 to the user
+        $user->roles()->attach(Config::get('roles.roles.admin')); // Assign roles with ID 4 to the user
 
         Auth::login($user);
 

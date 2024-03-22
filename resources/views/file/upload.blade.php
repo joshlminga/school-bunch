@@ -1,4 +1,12 @@
 <x-app-layout>
+	<!-- if trial is active then show the trial message -->
+	@if ($trial)
+		<div class="bg-red-500 border-l-4 border-red-700 text-white p-4 text-center font-bold" role="alert">
+			<p>Trial Account</p>
+			<p>{{ $trial }}</p>
+		</div>
+	@endif
+
 	<x-slot name="header">
 		<h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
 			{{ __('Upload Excel File') }}

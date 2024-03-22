@@ -23,6 +23,10 @@
 					<x-nav-link :href="route('upfile/all')" :active="request()->routeIs('upfile/all')">
 						{{ __('My Documents') }}
 					</x-nav-link>
+
+					<x-nav-link :href="route('upfile/students')" :active="request()->routeIs('upfile/students')">
+						{{ __('View Students') }}
+					</x-nav-link>
 				</div>
 			</div>
 

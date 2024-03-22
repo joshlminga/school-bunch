@@ -5,7 +5,7 @@ use App\Http\Middleware\RoleMiddleware;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
@@ -27,10 +27,18 @@ Route::group(['prefix' => 'upfile'], function () {
             Route::post('/upload', 'uploadfile');
             Route::get('/all', 'myfiles')->name('upfile/all');
             Route::get('/file', 'thisfile');
+            Route::get('/students', 'studentlist')->name('upfile/students');
+            Route::get('/print', 'printdoc')->name('upfile/print');
         });
     });
 });
 
+// ? Export Route
+Route::middleware([RoleMiddleware::class . ':upload'])->group(function () {
+    Route::get('pdf/export', [App\Http\Controllers\ManageFileController::class, 'export'])->name('pdf/export');
+});
+
+Route::get('pdf/demo', [App\Http\Controllers\PDFExport::class, 'index'])->name('pdf/demo');
 
 
 require __DIR__ . '/auth.php';
